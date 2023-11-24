@@ -1,5 +1,7 @@
 const express = require("express");
+
 const router = express.Router();
+
 const Checklist = require("../models/checklist");
 
 router.get("/", async (req, res) => {
@@ -65,7 +67,7 @@ router.put("/:id", async (req, res) => {
   let checklist = await Checklist.findById(req.params.id);
 
   try {
-    await checklist.update({ name });
+    await checklist.updateOne({ name });
     res.redirect("/checklists");
   } catch (error) {
     let errors = error.errors;
