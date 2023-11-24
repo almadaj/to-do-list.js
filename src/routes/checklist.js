@@ -77,9 +77,20 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     let checklist = await Checklist.findOneAndRemove(req.params.id);
+//     res.redirect("/checklists");
+//   } catch (error) {
+//     res
+//       .status(500)
+//       .render("pages/error", { error: "Erro ao delete a Lista de tarefas" });
+//   }
+// });
+
 router.delete("/:id", async (req, res) => {
   try {
-    let checklist = await Checklist.findByIdAndRemove(req.params.id);
+    let checklist = await Checklist.deleteOne({ _id: req.params.id });
     res.redirect("/checklists");
   } catch (error) {
     res
