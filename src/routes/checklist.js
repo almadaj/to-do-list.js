@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
     res.status(200).render("checklists/index", { checklists: checklists });
   } catch (error) {
     res
-      .status(200)
-      .render("pages/error", { error: "Erro ao exibir as Listas" });
+      .status(500)
+      .render("pages/error", { error: "Erro ao exibir as Listas de tarefas" });
   }
 });
 
@@ -22,7 +22,7 @@ router.get("/new", async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .render("pages/error", { errors: "Erro ao carregar o formulário" });
+      .render("pages/error", { error: "Erro ao carregar o formulário." });
   }
 });
 
@@ -32,7 +32,7 @@ router.get("/:id/edit", async (req, res) => {
     res.status(200).render("checklists/edit", { checklist: checklist });
   } catch (error) {
     res.status(500).render("pages/error", {
-      error: "Erro ao exibir a edição Listas de tarefas",
+      error: "Erro ao exibir a edição de Listas de tarefas",
     });
   }
 });
@@ -84,7 +84,7 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .render("pages/error", { error: "Erro ao delete a Lista de tarefas" });
+      .render("pages/error", { error: "Erro ao deletar a Lista de tarefas" });
   }
 });
 
